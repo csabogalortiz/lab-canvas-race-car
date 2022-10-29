@@ -27,14 +27,12 @@ const app = {
         this.drawCar()
         this.setEventHandlers()
         this.start()
-
-
     },
 
     setDimensions() {
         this.canvasSize = {
             w: 500,
-            h: 700,
+            h: 900,
         }
         document.querySelector('#myCanvas').setAttribute('height', this.canvasSize.h)
         document.querySelector('#myCanvas').setAttribute('width', this.canvasSize.w)
@@ -58,50 +56,17 @@ const app = {
         this.imageInstance.src = this.carDetails.image
     },
 
-
     drawSquare() {
-
         this.ctx.fillStyle = '#adbae3'
-        this.ctx.fillRect(0, 0, 500, 700)
-        this.ctx.fillStyle = 'grey'
-        this.ctx.fillRect(100, 0, 300, 700)
+        this.ctx.fillRect(0, 0, 500, 900)
     },
 
-    drawLines() {
 
-        this.ctx.lineWidth = 20
-        this.ctx.strokeStyle = '#FF7F50'
-        this.ctx.beginPath()
-
-        // arreglar / cambiar a lineas o cuadrados largos.. 
-        this.ctx.moveTo(110, 0)
-        this.ctx.lineTo(110, 700)
-        this.ctx.stroke()
-        this.ctx.closePath()
-
-        this.ctx.lineWidth = 20
-        this.ctx.strokeStyle = '#FF7F50'
-        this.ctx.beginPath()
-        this.ctx.moveTo(400, 0)
-        this.ctx.lineTo(400, 700)
-        this.ctx.stroke()
-        this.ctx.closePath()
-
-        this.ctx.lineWidth = 15
-        this.ctx.strokeStyle = '#FFDB58'
-        this.ctx.beginPath()
-        this.ctx.moveTo(250, 0)
-        this.ctx.lineTo(250, 700)
-        this.ctx.setLineDash([60, 20])
-        this.ctx.stroke()
-        this.ctx.closePath()
-    },
 
     start() {
         setInterval(() => {
             this.clearAll()
             this.drawCar()
-            this.drawLines()
             this.drawSquare()
             this.drawAll()
             this.framesCounter++
@@ -136,7 +101,7 @@ const app = {
 
     drawAll() {
         this.drawSquare()
-        this.drawLines()
+
         this.createCar()
         this.drawCar()
         this.obstacles.forEach(obstacle => obstacle.draw())
